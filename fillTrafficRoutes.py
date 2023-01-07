@@ -7,7 +7,7 @@ import database
 def fillTrafficRoute(num, now=None, day=None, old_durations_in_traffic=None):
     # Imposto le coordinate di origini e destinazioni, copiate dal file setupDB
     #   e inserite nello stesso ordine. Divido in tre parti i venticinque percorsi
-    #   perché l'API Distance Matrix di Google e' limitata a 100 elementi
+    #   perche' l'API Distance Matrix di Google e' limitata a 100 elementi
     #   'i' rappresenta l'id del primo percorso di quella richiesta
 
     if num == 1:
