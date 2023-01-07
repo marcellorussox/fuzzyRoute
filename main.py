@@ -1,3 +1,4 @@
+from datetime import datetime
 import croniter
 import time
 import subprocess
@@ -18,4 +19,4 @@ while True:
 
     # Eseguo il file fillTrafficRoutes.py usando subprocess
     subprocess.run(["python", "fillTrafficRoutes.py"])
-    print('Eseguito ' + str(next_execution))
+    print('Eseguito ' + datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
