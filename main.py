@@ -6,8 +6,6 @@ import subprocess
 cron = croniter.croniter('*/5 * * * *', time.time())
 
 while True:
-    # Eseguo il file fillTrafficRoutes.py usando subprocess
-    subprocess.run(["python", "fillTrafficRoutes.py"])
 
     # Ottiengo il prossimo momento in cui il cron job deve essere eseguito
     next_execution = cron.get_next()
@@ -17,3 +15,7 @@ while True:
 
     # Dormo per il tempo necessario
     time.sleep(sleep_time)
+
+    # Eseguo il file fillTrafficRoutes.py usando subprocess
+    subprocess.run(["python", "fillTrafficRoutes.py"])
+    print('Eseguito ' + next_execution)
