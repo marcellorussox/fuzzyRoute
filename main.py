@@ -18,4 +18,4 @@ while True:
 
     # Eseguo il file fillTrafficRoutes.py usando subprocess
     subprocess.run(["python", "fillTrafficRoutes.py"])
-    print('Eseguito ' + next_execution)
+    print('Eseguito ' + str(next_execution))
