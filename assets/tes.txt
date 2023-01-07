@@ -1,0 +1,79 @@
+origine 40.806127,14.203833
+destinazione 40.850595,14.230794
+
+
+origine
+via manzoni 1 40.804322,14.186283
+via manzoni 2 40.815001,14.199940       si
+via maznoni 3 40.825560,14.212163
+via manzoni 4 40.836749,14.213329       si
+corso europa 40.839057,14.216845
+via cilea 40.842627,14.219541           si
+via gemito 1 40.843463,14.224989
+via gemito 2 40.845712,14.225048        si
+via altamura 40.849772,14.225122
+destinazione                            si
+
+via manzoni 1 40.804322,14.186283
+via manzoni 2 40.815001,14.199940       si
+via manzoni 3 40.825560,14.212163
+via manzoni 4 40.836749,14.213329       si
+via falcone 1 40.837858,14.218120       si
+via falcone 2 40.839722,14.226611
+via cimarosa 40.842562,14.227428        si
+via bernini 40.844318,14.231716
+destinazione                            si
+
+via posillipo 40.823204,14.217794       si
+via caracciolo 40.826937,14.220331
+via campanella 40.829067,14.222180      si
+salita piedigrotta 40.830315,14.219758
+via ruiz 40.833584,14.221689
+corso v. emanuele 40.836614,14.229264   si
+via falcone 1 40.837858,14.218120       si
+via falcone 2 40.839722,14.226611
+via cimarosa 40.842562,14.227428        si
+via bernini 40.844185,14.231731
+destinazione                            si
+
+via posillipo 40.823281,14.217944       si
+via caracciolo 40.826937,14.220331
+via campanella 40.828929,14.222267      si
+salita piedigrotta 40.830315,14.219758
+via ruiz 40.833584,14.221689
+corso v. emanuele 40.836614,14.229264   si
+via rosa 40.851575,14.242111            si
+via suarez 40.850151,14.235977
+destinazione                            si
+
+
+ROUTE
+1  origine-posillipo
+2  posillipo-caracciolo
+3  caracciolo-campanella
+4  campanella-piedigrotta
+5  piedigrotta-ruiz
+6  ruiz-emanuele
+7  emanuele-rosa
+8  rosa-suarez
+9  suarez-destinazione
+10 emanuele-falcone1
+11 origine-manzoni1
+12 manzoni1-manzoni2
+13 manzoni2-manzoni3
+14 manzoni3-manzoni4
+15 manzoni4-europa
+16 europa-cilea
+17 cilea-gemito1
+18 gemito1-gemito2
+19 gemito2-altamura
+20 altamura-destinazione
+21 manzoni4-falcone1
+22 falcone1-falcone2
+23 falcone2-cimarosa
+24 cimarosa-bernini
+25 bernini-destinazione
+26 1,2,3,4,5,6,7,8,9
+27 1,2,3,4,5,6,10,22,23,24,25
+28 11,12,13,14,15,16,17,18,19,20
+29 11,12,13,14,21,22,23,24,25

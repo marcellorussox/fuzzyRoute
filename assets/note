@@ -1,0 +1,31 @@
+origine = '40.806127,14.203833'                             #Via Posillipo, 421
+waypoints = 'via:40.804322,14.186283|via:40.815001,14.199940|via:40.825560,14.212163|via:40.836749,14.213329|via:40.839057,14.216845|via:40.842627,14.219541|via:40.843463,14.224989|via:40.845712,14.225048|via:40.849772,14.225122'                       #Via A. Manzoni, 265
+destinazione = '40.850595,14.230794'                        #Via A. Manzoni, 220
+nomeFile = 'tratto1'
+richiediInfoPercorso(origine, destinazione, waypoints, nomeFile)
+
+
+1  origine-manzoni1
+2  manzoni1-manzoni2
+3  manzoni2-manzoni3
+4  manzoni3-manzoni4
+5  manzoni4-europa
+6  europa-cilea
+7  cilea-gemito1
+8  gemito1-gemito2
+9  gemito2-altamura
+10 altamura-destinazione
+11 manzoni4-falcone1
+12 falcone1-falcone2
+13 falcone2-cimarosa
+14 cimarosa-bernini
+15 bernini-destinazione
+16 origine-posillipo
+17 posillipo-caracciolo
+18 caracciolo-campanella
+19 campanella-piedigrotta
+20 piedigrotta-ruiz
+21 ruiz-emanuele
+22 emanuele-rosa
+23 rosa-suarez
+24 surez-destinazione
