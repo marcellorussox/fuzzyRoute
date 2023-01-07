@@ -82,8 +82,8 @@ def fillTrafficRoute(num, now=None, day=None, old_durations_in_traffic=None):
         day = now.weekday()
         now = now.strftime('%Y-%m-%d %H:%M:%S')
 
-    url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins" \
-          f"={'|'.join(origins)}&destinations={'|'.join(destinations)}&unit=metric&" \
+    baseUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?"
+    url = f"{baseUrl}origins={'|'.join(origins)}&destinations={'|'.join(destinations)}&unit=metric&" \
           f"mode=driving&departure_time=now&key=AIzaSyD_mPNgr6gPLNcbVPXbZWJFAj6ns4A1nr8"
 
     response = requests.get(url)
