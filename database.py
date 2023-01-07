@@ -7,22 +7,23 @@ class Database:
         self.cursor = self.conn.cursor()
 
     def create_table(self, table_name, columns):
-        query = f"CREATE TABLE {table_name} ({', '.join(columns)})"
+        query = 'CREATE TABLE ' + table_name + ' (' + ', '.join(columns) + ')'
         self.cursor.execute(query)
         self.conn.commit()
 
     def insert_row(self, table_name, values, columns=None):
         if columns:
+            columns = ", ".join(["?"] * len(columns))
             placeholders = ", ".join(["?"] * len(values))
-            query = f"INSERT INTO {table_name} ({', '.join(columns)}) VALUES ({placeholders})"
+            query = 'INSERT INTO ' + table_name + ' (' + columns + ') VALUES (' + placeholders + ')'
         else:
             placeholders = ", ".join(["?"] * len(values))
-            query = f"INSERT INTO {table_name} VALUES ({placeholders})"
+            query = 'INSERT INTO ' + table_name + ' VALUES (' + placeholders + ')'
         self.cursor.execute(query, values)
         self.conn.commit()
 
     def select_all(self, table_name):
-        query = f"SELECT * FROM {table_name}"
+        query = 'SELECT * FROM ' + table_name
         self.cursor.execute(query)
         return self.cursor.fetchall()
 

@@ -7,23 +7,24 @@ def fillRoute(start, end, waypoints=None):
     # Costruisco l'url della richiesta
     if waypoints:
         url = "https://maps.googleapis.com/maps/api/directions/json?" \
-              f"origin={start}&" \
-              "unit=metric&" \
-              "mode=driving&" \
-              f"destination={end}&" \
-              "alternatives=false&" \
-              f"waypoints={waypoints}&" \
-              "departure_time=now&" \
-              f"key=AIzaSyD_mPNgr6gPLNcbVPXbZWJFAj6ns4A1nr8"
+                    "origin=" + start + "&" \
+                    "unit=metric&" \
+                    "mode=driving&" \
+                    "destination=" + end + "&" \
+                    "alternatives=false&" \
+                    "waypoints=" + waypoints + "&" \
+                    "departure_time=now&" \
+                    "key=AIzaSyD_mPNgr6gPLNcbVPXbZWJFAj6ns4A1nr8"
+
     else:
         url = "https://maps.googleapis.com/maps/api/directions/json?" \
-              f"origin={start}&" \
+              "origin=" + start + "&" \
               "unit=metric&" \
               "mode=driving&" \
-              f"destination={end}&" \
+              "destination=" + end + "&" \
               "alternatives=false&" \
               "departure_time=now&" \
-              f"key=AIzaSyD_mPNgr6gPLNcbVPXbZWJFAj6ns4A1nr8"
+              "key=AIzaSyD_mPNgr6gPLNcbVPXbZWJFAj6ns4A1nr8"
 
     response = requests.get(url)
 
