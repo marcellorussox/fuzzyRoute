@@ -24,7 +24,6 @@ via cimarosa 40.842562,14.227428
 via bernini 40.844185,14.231731
 destinazione 40.850595,14.230794
 
-
 ROUTE
 1  origine-posillipo
 2  posillipo-caracciolo
