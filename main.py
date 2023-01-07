@@ -3,7 +3,7 @@ import time
 import subprocess
 
 # Definisco l'intervallo di tempo in cui il cron job deve essere eseguito
-cron = croniter.croniter('*/5 * * * *', time.gmtime())
+cron = croniter.croniter('*/5 * * * *', time.time())
 
 while True:
     # Ottiengo il prossimo momento in cui il cron job deve essere eseguito
