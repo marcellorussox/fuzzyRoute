@@ -4,12 +4,13 @@ import requests
 import database
 
 
-def fillTrafficRoute(num, now=None, day=None, old_durations_in_traffic=None):
-    # Imposto le coordinate di origini e destinazioni, copiate dal file setupDB
-    #   e inserite nello stesso ordine. Divido in tre parti i venticinque percorsi
-    #   perche' l'API Distance Matrix di Google e' limitata a 100 elementi
-    #   'i' rappresenta l'id del primo percorso di quella richiesta
-
+def fill_traffic_route(num, now=None, day=None, old_durations_in_traffic=None):
+    """
+    Imposto le coordinate di origini e destinazioni, copiate dal file setupDB
+    e inserite nello stesso ordine. Divido in tre parti i venticinque percorsi
+    perche' l'API Distance Matrix di Google è limitata a 100 elementi
+    'i' rappresenta l'id del primo percorso di quella richiesta
+    """
     if num == 1:
         id = 1
         origins = ['40.806127,14.203833',
@@ -64,7 +65,6 @@ def fillTrafficRoute(num, now=None, day=None, old_durations_in_traffic=None):
                    '40.842562,14.227428',
                    '40.844318,14.231716'
                    ]
-
         destinations = ['40.845712,14.225048',
                         '40.849772,14.225122',
                         '40.850595,14.230794',
@@ -83,7 +83,8 @@ def fillTrafficRoute(num, now=None, day=None, old_durations_in_traffic=None):
         now = now.strftime('%Y-%m-%d %H:%M:%S')
 
     baseUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?"
-    url = baseUrl + "origins=" + '|'.join(origins) + "&destinations=" + '|'.join(destinations) + "&unit=metric&" + "mode=driving&departure_time=now&key=AIzaSyD_mPNgr6gPLNcbVPXbZWJFAj6ns4A1nr8"
+    url = baseUrl + "origins=" + '|'.join(origins) + "&destinations=" + '|'.join(
+        destinations) + "&unit=metric&" + "mode=driving&departure_time=now&key=AIzaSyD_mPNgr6gPLNcbVPXbZWJFAj6ns4A1nr8"
 
     response = requests.get(url)
     durations_in_traffic = []
@@ -94,7 +95,7 @@ def fillTrafficRoute(num, now=None, day=None, old_durations_in_traffic=None):
         # Per ogni elemento della matrice di distanza
         j = 0
         for element in data["rows"]:
-            # Appendi le informazioni di distanza, durata e durata con il traffico alla lista
+            # Appendo le informazioni di distanza, durata e durata con il traffico alla lista
             durations_in_traffic.append(element["elements"][j]["duration_in_traffic"]["value"])
             j += 1
 
@@ -115,22 +116,29 @@ def fillTrafficRoute(num, now=None, day=None, old_durations_in_traffic=None):
     return now, day, durations_in_traffic
 
 
-def fillTotalTrafficRoute(now, day, dit):
-    dit1 = dit[0] + dit[1] + dit[2] + dit[3] + dit[4] + dit[5] + dit[6] + dit[7] + dit[8]
-    dit2 = dit[0] + dit[1] + dit[2] + dit[3] + dit[4] + dit[5] + dit[9] + dit[21] + dit[22] + dit[23] + dit[24]
-    dit3 = dit[10] + dit[11] + dit[12] + dit[13] + dit[14] + dit[15] + dit[16] + dit[17] + dit[18] + dit[19]
-    dit4 = dit[10] + dit[11] + dit[12] + dit[13] + dit[20] + dit[21] + dit[22] + dit[23] + dit[24]
-
+def fill_total_traffic_routes(now, day, durations_in_traffic):
+    route_ids = [26, 27, 28, 29]
     db = database.Database('database.db')
-    db.insert_row('traffic_route', (26, now, day, dit1))
-    db.insert_row('traffic_route', (27, now, day, dit2))
-    db.insert_row('traffic_route', (28, now, day, dit3))
-    db.insert_row('traffic_route', (29, now, day, dit4))
 
-    return
+    for route_id in route_ids:
+        # Eseguo una query sulla tabella route_link per recuperare i valori di 'route2'
+        route_links = db.query("SELECT route2 FROM route_link WHERE route1 = %s ORDER BY sequence", (route_id,))
+    
+        # Inizializzare una variabile 'dit_sum' a zero
+        dit_sum = 0
+    
+        # Iterare attraverso i valori di 'route2'
+        for route in route_links:
+            route2 = route[0]
+            dit_sum += durations_in_traffic[route2 - 1]
+    
+        # Inserire la somma totale di 'dit' nella tabella traffic_route
+        db.insert_row('traffic_route', (route_id, now, day, dit_sum))
+
+    pass
 
 
-data = fillTrafficRoute(1)
-data = fillTrafficRoute(2, data[0], data[1], data[2])
-data = fillTrafficRoute(3, data[0], data[1], data[2])
-fillTotalTrafficRoute(data[0], data[1], data[2])
+data = fill_traffic_route(1)
+data = fill_traffic_route(2, data[0], data[1], data[2])
+data = fill_traffic_route(3, data[0], data[1], data[2])
+fill_total_traffic_routes(data[0], data[1], data[2])

@@ -1,3 +1,4 @@
+WAYPOINTS
 origine 40.806127,14.203833
 via posillipo 40.823281,14.217944
 via caracciolo 40.826937,14.220331
@@ -20,9 +21,8 @@ via altamura 40.849772,14.225122
 via falcone 2 40.839722,14.226611
 via cimarosa 40.842562,14.227428
 via bernini 40.844318,14.231716
-via cimarosa 40.842562,14.227428
-via bernini 40.844185,14.231731
 destinazione 40.850595,14.230794
+
 
 ROUTE
 1  origine-posillipo

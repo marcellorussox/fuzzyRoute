@@ -22,10 +22,5 @@ class Database:
         self.cursor.execute(query, values)
         self.conn.commit()
 
-    def select_all(self, table_name):
-        query = 'SELECT * FROM ' + table_name
-        self.cursor.execute(query)
-        return self.cursor.fetchall()
-
     def close(self):
         self.conn.close()
